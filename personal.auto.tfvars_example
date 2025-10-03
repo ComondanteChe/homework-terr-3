@@ -1,3 +1,3 @@
-token  =  ""
-cloud_id  = ""
-folder_id = ""
+token  =  "/home/administrator/.ssh/.authorized_key.json"
+cloud_id  = "b1g7i90u6v2v15jrqpdj"
+folder_id = "b1gnfat6d5tspst8frqn"
