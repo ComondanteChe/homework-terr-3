@@ -3,7 +3,7 @@ data "template_file" "ansible_inventory" {
     vars = {
     webservers = yandex_compute_instance.web[*]
     database  = yandex_compute_instance.each_vm_instance[*]
-    storage   = yandex_compute_instance_storage.name
+    storage   = yandex_compute_instance.storage.name
     }
 }
 
