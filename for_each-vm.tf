@@ -13,7 +13,6 @@ variable "each_vm" {
     nat           = bool
     scheduling_policy = bool
     ssh_user      = string
-    ssh_key       = string
     }))
     default = {
       "main" = { 
