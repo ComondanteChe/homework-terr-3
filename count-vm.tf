@@ -23,14 +23,13 @@ resource "yandex_compute_instance" "web" {
     network_interface {
       subnet_id = yandex_vpc_subnet.develop.id
       nat       = true
+      security_group_ids = yandex_vpc_security_group.example.id
     }
 
     metadata = {
       serial-port-enable = 1
-      ssh-keys = local.ssh_key
+      ssh-keys = "${local.ssh_user}:${local.ssh_key}"
     }   
-
-    security_group_ids = yandex_vpc_security_group.example.id
 
     depends_on = [ yandex_compute_instance.each_vm_instance ]
 }
