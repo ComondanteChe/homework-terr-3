@@ -1,8 +1,10 @@
 data "template_file" "ansible_inventory" {
-  template = file("${path.module}/hosts.tftpl",
-    {webservers = yandex_computer_instance.web.name[*]},
-    {database  = yandex_compute_instance_each_vm_instance.name[*]},
-    {storage   = yandex_compute_instance_storage.name})
+  template = file("${path.module}/hosts.tftpl")
+    vars = {
+    webservers = yandex_computer_instance.web[*]
+    database  = yandex_compute_instance.each_vm_instance[*]
+    storage   = yandex_compute_instance_storage[*]
+    }
 }
 
 resource "local_file" "hosts_templatefile" {
