@@ -21,7 +21,7 @@ variable "each_vm" {
       "main" = { 
         name          = "main"
         platform_id   = "standard-v3"
-        zone          = var.default_zone
+        zone          = "ru-central1-a"
         cores         = 2
         memory        = 1
         core_fraction = 20
@@ -39,7 +39,7 @@ variable "each_vm" {
       "replica" = { 
         name          = "replica"
         platform_id   = "standard-v3"
-        zone          = var.default_zone
+        zone          = "ru-central1-a"
         cores         = 3
         memory        = 2
         core_fraction = 20
