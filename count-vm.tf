@@ -1,7 +1,7 @@
 resource "yandex_compute_instance" "web" {
   count = 2
     name        = "web-${count.index + 1}"
-    platform_id = "standart-v1"
+    platform_id = "standard-v1"
     zone        = var.default_zone
 
     resources {
