@@ -10,7 +10,7 @@ variable "each_vm" {
       type = string
       size = number
     })
-    image_id         = string
+    image_id      = string
     subnet_id     = string
     nat           = bool
     scheduling_policy = bool
