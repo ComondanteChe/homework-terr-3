@@ -10,7 +10,7 @@ variable "each_vm" {
       type = string
       size = number
     })
-    image         = string
+    image_id         = string
     subnet_id     = string
     nat           = bool
     scheduling_policy = bool
@@ -43,7 +43,7 @@ variable "each_vm" {
         cores         = 3
         memory        = 2
         core_fraction = 20
-        image_id    = local.image_id
+        image_id
         boot_disk = {
           type = "network-hdd"
           size = 15
