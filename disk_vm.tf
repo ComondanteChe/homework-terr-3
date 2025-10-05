@@ -14,12 +14,17 @@ resource "yandex_compute_instance" "storage" {
       memory        = 1
       core_fraction = 20
     }
+    boot_disk {
+      initialize_params {
+        image_id = data.yandex_compute_image.ubuntu-2004-lts.image_id
+        type     = "network-hdd"
+        size     = 10
+      }
+    }
     dynamic secondary_disk {
       for_each = yandex_compute_disk.disk_storage
-      boot_disk {
-            initialize_params {
-              disk_id = secondary_disk.value.id
-            }
+      disk {
+        id = secondary_disk.value.id
         }
     }    
     scheduling_policy { preemptible = true }
