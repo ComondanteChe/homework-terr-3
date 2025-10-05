@@ -6,22 +6,22 @@ variable "each_vm" {
         core_fraction = number
         boot_disk_size = number
     }))
-    default = [
-      { 
+    default = {
+      main = { 
         name          = "main"
         cores         = 2
         memory        = 1
         core_fraction = 20
         boot_disk_size = 10
       },
-      {
+      replica = {
         name          = "replica"
         cores         = 3
         memory        = 2
         core_fraction = 20
         boot_disk_size = 15
       }
-    ]
+    }
 }
 
 resource "yandex_compute_instance" "each_vm_instance" {
