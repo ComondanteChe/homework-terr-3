@@ -16,9 +16,11 @@ resource "yandex_compute_instance" "storage" {
     }
     dynamic secondary_disk {
       for_each = yandex_compute_disk.disk_storage
-      content {
-        disk_id = secondary_disk.value.id
-      }
+      boot_disk {
+            initialize_params {
+              disk_id = secondary_disk.value.id
+            }
+        }
     scheduling_policy { preemptible = true }
     network_interface {
       subnet_id = yandex_vpc_subnet.develop.id
