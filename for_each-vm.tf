@@ -27,7 +27,7 @@ variable "each_vm" {
         core_fraction = 20
         boot_disk = {
           initialize_params = {
-            image_id = data.yandex_compute_image.ubuntu.image_id
+            image_id = local.image_id
           }
           type = "network-hdd"
           size = 10
@@ -47,7 +47,7 @@ variable "each_vm" {
         core_fraction = 20
         boot_disk = {
           initialize_params = {
-            image_id = data.yandex_compute_image.ubuntu.image_id
+            image_id = local.image_id
           }
           type = "network-hdd"
           size = 15
