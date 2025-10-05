@@ -47,7 +47,7 @@ resource "yandex_compute_instance" "each_vm_instance" {
     }
     metadata = {
       serial-port-enable = 1
-      ssh-keys = "${each.value.ssh_user}:${local.ssh_key}"
+      ssh-keys = "${local.ssh_user}:${local.ssh_key}"
     }
     scheduling_policy { preemptible = true }
 }
