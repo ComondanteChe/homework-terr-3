@@ -26,10 +26,12 @@ variable "each_vm" {
         memory        = 1
         core_fraction = 20
         boot_disk = {
+          initialize_params = {
+            image_id = data.yandex_compute_image.ubuntu.image_id
+          }
           type = "network-hdd"
           size = 10
         }
-        image         = data.yandex_compute_image.ubuntu.image_id
         subnet_id     = yandex_vpc_subnet.develop.id
         nat           = true
         scheduling_policy = true
@@ -44,10 +46,12 @@ variable "each_vm" {
         memory        = 2
         core_fraction = 20
         boot_disk = {
+          initialize_params = {
+            image_id = data.yandex_compute_image.ubuntu.image_id
+          }
           type = "network-hdd"
           size = 15
         }
-        image         = data.yandex_compute_image.ubuntu.image_id
         subnet_id     = yandex_vpc_subnet.develop.id
         nat           = true
         scheduling_policy = true
