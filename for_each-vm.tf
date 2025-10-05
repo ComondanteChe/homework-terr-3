@@ -10,8 +10,6 @@ variable "each_vm" {
       type = string
       size = number
     })
-    image_id      = string
-    subnet_id     = string
     nat           = bool
     scheduling_policy = bool
     ssh_user      = string
@@ -25,16 +23,13 @@ variable "each_vm" {
         cores         = 2
         memory        = 1
         core_fraction = 20
-        image_id    = local.image_id
         boot_disk = {
           type = "network-hdd"
           size = 10
         }
-        subnet_id     = yandex_vpc_subnet.develop.id
         nat           = true
         scheduling_policy = true
         ssh_user      = "ubuntu"
-        ssh_key       = local.ssh_key
         }
       "replica" = { 
         name          = "replica"
@@ -43,16 +38,13 @@ variable "each_vm" {
         cores         = 3
         memory        = 2
         core_fraction = 20
-        image_id
         boot_disk = {
           type = "network-hdd"
           size = 15
         }
-        subnet_id     = yandex_vpc_subnet.develop.id
         nat           = true
         scheduling_policy = true
         ssh_user      = "ubuntu"
-        ssh_key       = local.ssh_key
         }
     }
 }
@@ -66,12 +58,12 @@ resource "yandex_compute_instance" "each_vm_instance" {
     memory       = each.value.memory
     core_fraction = each.value.core_fraction
     boot_disk = each.value.boot_disk
-    image         = each.value.image
-    subnet_id     = each.value.subnet_id
+    image         = local.image_id
+    subnet_id     = yandex_vpc_subnet.develop.id
     nat           = each.value.nat
     scheduling_policy = each.value.scheduling_policy
     ssh_user      = each.value.ssh_user
-    ssh_key       = each.value.ssh_key
+    ssh_key       = local.ssh_key
     zone        = each.value.zone
 }
 }
