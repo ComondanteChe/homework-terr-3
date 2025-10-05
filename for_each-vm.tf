@@ -41,7 +41,6 @@ resource "yandex_compute_instance" "each_vm_instance" {
         size     = each.value.boot_disk_size
       }
     }
-    sheduling_policy { preemptible = true }
     network_interface {
       subnet_id = yandex_vpc_subnet.develop.id
       nat       = true
@@ -50,4 +49,5 @@ resource "yandex_compute_instance" "each_vm_instance" {
       serial-port-enable = 1
       ssh-keys = "${each.value.ssh_user}:${local.ssh_key}"
     }
+    scheduling_policy { preemptible = true }
 }
