@@ -25,10 +25,8 @@ variable "each_vm" {
         cores         = 2
         memory        = 1
         core_fraction = 20
+        image_id    = local.image_id
         boot_disk = {
-          initialize_params = {
-            image_id = local.image_id
-          }
           type = "network-hdd"
           size = 10
         }
@@ -45,10 +43,8 @@ variable "each_vm" {
         cores         = 3
         memory        = 2
         core_fraction = 20
+        image_id    = local.image_id
         boot_disk = {
-          initialize_params = {
-            image_id = local.image_id
-          }
           type = "network-hdd"
           size = 15
         }
