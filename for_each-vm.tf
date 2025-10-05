@@ -27,7 +27,7 @@ variable "each_vm" {
 resource "yandex_compute_instance" "each_vm_instance" {
     for_each = var.each_vm
     name     = each.value.name 
-    platform_id = "standart-v3"
+    platform_id = "standart-v1"
     zone        = "ru-central1-a"
     resources {
       cores         = each.value.cores
