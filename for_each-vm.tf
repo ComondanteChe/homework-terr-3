@@ -36,7 +36,7 @@ resource "yandex_compute_instance" "each_vm_instance" {
     }
     boot_disk {
       initialize_params {
-        image_id = date.yandex_compute_image.ubuntu.image_id
+        image_id = data.yandex_compute_image.ubuntu-2004-lts.image_id
         type     = "network-hdd"
         size     = each.value.boot_disk_size
       }
