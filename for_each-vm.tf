@@ -16,7 +16,7 @@ variable "each_vm" {
       },
       replica = {
         name          = "replica"
-        cores         = 3
+        cores         = 4
         memory        = 2
         core_fraction = 20
         boot_disk_size = 15
