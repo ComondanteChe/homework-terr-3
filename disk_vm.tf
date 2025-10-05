@@ -3,6 +3,7 @@ resource "yandex_compute_disk" "disk_storage" {
         name  = "disk-storage-${count.index + 1}"
         type  = "network-hdd"
         size  = 1
+        zone  = "ru-central1-a"
 }
 
 resource "yandex_compute_instance" "storage" {
@@ -22,9 +23,9 @@ resource "yandex_compute_instance" "storage" {
       }
     }
     dynamic secondary_disk {
-      for_each = yandex_compute_disk.disk_storage
-      disk {
-        id = secondary_disk.value.id
+      for_each = yandex_compute_disk.disk_storage[*].id
+      content {
+        disk_id = secondary_disk.value.id
         }
     }    
     scheduling_policy { preemptible = true }
