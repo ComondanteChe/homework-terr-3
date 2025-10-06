@@ -1,5 +1,5 @@
 output "VM_info" {
-value = marge (
+value = flatten (
     {for key, vm in yandex_compute_instance.each_vm_instance : "${key}" => {
       id          = vm.id
       name        = vm.name
