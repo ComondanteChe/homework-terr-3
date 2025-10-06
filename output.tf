@@ -7,9 +7,9 @@ value = marge (
     }
     },
     {for idx, vm in yandex_compute_instance.web : "${idx}" => {
-      id          = cm.id
-      name        = cm.name
-      fqdn        = cm.fqdn
+      id          = vm.id
+      name        = vm.name
+      fqdn        = vm.fqdn
     }
     }
 )
