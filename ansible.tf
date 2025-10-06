@@ -13,7 +13,7 @@ resource "null_resource" "ansible_provision" {
 
   provisioner "local-exec" {
     command    = "ansible-playbook -i ${abspath(path.module)}/hosts.ini  ${abspath(path.module)}/test.yml"
-    on_failure = continue
+    # on_failure = continue
 
   }
 }
