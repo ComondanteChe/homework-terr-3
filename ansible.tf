@@ -12,7 +12,7 @@ resource "null_resource" "ansible_provision" {
     depends_on = [local_file.ansible_inventory, yandex_compute_instance.web, yandex_compute_instance.each_vm_instance, yandex_compute_instance.storage]
 
   provisioner "local-exec" {
-    command    = "ansible-playbook -i ${abspath(path.module)}/hosts.ini --private-key ${local.ssh_key} --user ${local.ssh_user} ${abspath(path.module)}/playbook.yml"
+    command    = "ansible-playbook -i ${abspath(path.module)}/hosts.ini --private-key ${local.ssh_key} --user ${local.ssh_user} playbook.yml"
     on_failure = continue
 
   }
